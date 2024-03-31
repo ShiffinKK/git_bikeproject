@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+  
+{%block main_block%}
+<section class="section product-detail">
+  <div class="details container">
+    <div class="left image-container">
+      <div class="main">
+        <img src="{{data.image.url}}" id="zoom" alt="" />
+      </div>
+    </div>
+    <div class="right">
+      <span>Home/T-shirt</span>
+      <h1>{{data.title}}</h1>
+      <div class="price">{{data.price}}</div>
+      <h1>model:{{data.Model_year}}</h1>
+      <form  method="post" action="{%url 'addto-Wish' data.id%}">
+        {%csrf_token%}
+
+        <button type="submit" class="btn btn-outline-dark btn-lg">add for comparing</button>
+      </form>
+      <h3>Product Detail</h3>
+      <p>
+       {{data.description}}
+      </p>
+      
+
+      <a href="{%url 'checkout' data.id%}" class="checkout btn">Book Now</a>
+
+      
+
+      
+
+    </div>
+  </div>
+</section>
+{%endblock%}
+

@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block main_block%}
+   {%for p in data%}
+   <div class="container d-flex justify-content-center align-items-center" style="height: 400px;background-color: aquamarine;background-image: url('{%static 'images/back.png'%}');">
+
+   <div class="card " style="width: 60rem; background-color: rgb(145, 22, 24) ;"  >
+      <ul class="list-group list-group-flush" style="background-color: brown;">
+        <li class="list-group-item" style="height: 6rem; display: flex; justify-content: center;" ><h1>Costumer Service Details</h1></li>
+
+        <li class="list-group-item" style="height: 6rem;" ><h2>Costumer Name:</h2>{{p.owner}}</li>
+
+        <li class="list-group-item" style="height: 6rem;">
+         <h2>Bike name:</h2>{{p.name}}</li>
+        <li class="list-group-item" style="height: 6rem;" ><h2>Recorded Date and Timne:</h2>{{p.date}}</li>
+        <li class="list-group-item" style="height: 6rem;">
+          <h2>Status:</h2>{{request.user.repair.status}}
+        </li>
+      </ul>
+    </div>
+  </div>
+   
+   {%endfor%}
+{%endblock%}

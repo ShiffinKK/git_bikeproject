@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{%block main_block%}
+<div class="container cart">
+    <table>
+      <h1>Compare your Selections</h1>
+      <tr>
+        <th>Product</th>
+        <th>Year</th>
+        <th>Km</th>
+        <th>Price</th>
+      </tr>
+     <!-- iterate start-->
+     {%for bi in data%}
+     <tr>
+        <td>
+          <div class="cart-info">
+            <img src="{{bi.Bike_object.image.url}}" alt="" />
+            <div>
+              <p>{{bi.Bike_object.title}}</p>
+              <span>Price: {{bi.Bike_object.price}}</span> <br />
+              <a href="{%url 'remove' bi.id%}">remove</a>
+            </div>
+          </div>
+        </td>
+        <td>{{bi.Bike_object.Model_year}}</td>
+        <td>{{bi.Bike_object.km}}</td>
+        
+
+        <td>{{bi.Bike_object.price}}Rs</td>
+      </tr>
+     {%endfor%}
+     <!-- iterate end -->
+  
+    </table>
+    <div class="total-price">
+      <table>
+        <tr>
+          <td><h6>(recomentation is based on Price)</h5></td>
+            <td>{{request.user.cart.recoment}}</td>    
+        </tr>
+       
+      </table>
+      <a href="#" class="checkout btn">Proceed To Checkout</a>
+    </div>
+  </div>
+{%endblock%}
