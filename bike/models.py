@@ -25,6 +25,8 @@ class Bike(models.Model):
     updated_date=models.DateTimeField(auto_now=True)
     is_active=models.BooleanField(default=True)
     km=models.PositiveBigIntegerField()
+    is_placed=models.BooleanField(default=False)
+    
       
     def __str__(self):
         return self.title
@@ -86,6 +88,12 @@ class Order(models.Model):
     email=models.CharField(max_length=200,null=True)
     is_paid=models.BooleanField(default=False)
     total=models.PositiveIntegerField()
+    order_id=models.CharField(max_length=200,null=True)
+    options=(
+        ("cod","cod"),
+        ("online","online")
+    )
+    payment=models.CharField(max_length=200,choices=options,default="cod")
     option=(
         ("order-placed","order-placed"),
         ("intransit","intransit"),
@@ -105,7 +113,11 @@ class Order(models.Model):
         if self.status=="intransit":
             shipped=True
             return shipped
-    
+        
+
+class PriceRange(models.Model):
+    range=models.PositiveIntegerField()
+   
 
    
  

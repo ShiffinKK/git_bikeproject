@@ -34,7 +34,14 @@
 
   <!-- responsive style -->
   <link href="{%static 'css/responsive.css'%}" rel="stylesheet" />
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
+
 <body>
     <div class="hero_area">
         <!-- header section strats -->
@@ -91,14 +98,14 @@
                 </a>
                
                 </a>
-                <a href="">
+                <!--<a href="">
                   <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                 </a>
                 <form class="form-inline ">
                   <button class="btn nav_search-btn" type="submit">
                     <i class="fa fa-search" aria-hidden="true"></i>
                   </button>
-                </form>
+                </form>-->
               </div>
             </div>
           </nav>
@@ -115,7 +122,67 @@
 
 {%endblock%}
 
-<footer class=" footer_section" ;>
+<section class="info_section  layout_padding4-top " style="background-color: rgb(12, 11, 12);">
+  <div class="social_container" style="display: flex; justify-content: center;">
+    <div class="social_box">
+      <a href="">
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+      </a>
+      <a href="">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+      </a>
+      <a href="">
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a href="">
+        <i class="fa fa-youtube" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <div class="info_container " style="display: flex; justify-content: center;">
+    <div class="container" style="display: flex; justify-content: center;">
+      <div class="row" style="display: flex; justify-content: center;">
+        <div class="col-md-6 col-lg-3">
+          <h6>
+            ABOUT US
+          </h6>
+          <p>
+            We are very promising Bike selling organisasion with garenteed service. We started our journey in 2004 and completed our 10 years of excellency
+          </p>
+        </div>
+        
+        <div class="col-md-6 col-lg-3">
+          <h6>
+            NEED HELP
+          </h6>
+          <p>
+            Costomer satisfaction is our first priority, we are always with our costomers to solve their problems .Please contact as when you need help
+          </p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <h6>
+            CONTACT US
+          </h6>
+          <div class="info_link-box">
+            <a href="">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span> Gb road 123 london Uk </span>
+            </a>
+            <a href="">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>+01 12345678901</span>
+            </a>
+            <a href="">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span> demo@gmail.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer section -->
+  <footer class=" footer_section">
     <div class="container">
       <p>
         &copy; <span id="displayYear"></span> All Rights Reserved By
@@ -123,5 +190,24 @@
       </p>
     </div>
   </footer>
+  <!-- footer section -->
+
+</section>
+
+
+  <script>
+    $(document).ready(function(){
+      // Activate the carousel
+      $('#carouselExampleIndicators').carousel();
+      
+      // Enable carousel controls
+      $('.carousel-control-prev').click(function(){
+        $('#carouselExampleIndicators').carousel('prev');
+      });
+      $('.carousel-control-next').click(function(){
+        $('#carouselExampleIndicators').carousel('next');
+      });
+    });
+  </script>
 </body>
 </html>

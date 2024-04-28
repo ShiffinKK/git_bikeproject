@@ -60,7 +60,7 @@ body {
 
 /*header section*/
 .hero_area {
-  padding: 0 45px;
+  padding: 0 0px;
  
 }
 
@@ -746,7 +746,7 @@ a:focus {
   position: relative;
   background-color: #981717;
   color: #ffffff;
-  margin: 0 45px 45px;
+  margin: 0 0 0;
 }
 
 .info_section .social_container {

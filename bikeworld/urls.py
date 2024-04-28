@@ -39,6 +39,8 @@ urlpatterns = [
     path('why/',views.WhyUsView.as_view(),name="why"),
 
     path('ordetitem/<int:pk>remove/',views.OrderItemRemoveView.as_view(),name="item-delete"),
+    path('payment/verification/',views.PaymentVerificationView.as_view(),name="verification")
+
 
 
 

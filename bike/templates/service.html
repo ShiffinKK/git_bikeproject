@@ -2,9 +2,10 @@
 {%load static%}
 {%block main_block%}
    {%for p in data%}
+   <div style="margin-top: 25px;">
    <div class="container d-flex justify-content-center align-items-center" style="height: 400px;background-color: aquamarine;background-image: url('{%static 'images/back.png'%}');">
 
-   <div class="card " style="width: 60rem; background-color: rgb(145, 22, 24) ;"  >
+   <div class="card" style="width: 60rem; background-color: rgb(246, 78, 81) ;"  >
       <ul class="list-group list-group-flush" style="background-color: brown;">
         <li class="list-group-item" style="height: 6rem; display: flex; justify-content: center;" ><h1>Costumer Service Details</h1></li>
 
@@ -19,6 +20,7 @@
       </ul>
     </div>
   </div>
+</div>
    
    {%endfor%}
 {%endblock%}

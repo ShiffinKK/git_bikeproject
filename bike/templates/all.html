@@ -1,12 +1,11 @@
-
 {%extends 'base.html'%}
 {%load static%}
-  <!--product section starts-->
+<!--product section starts-->
 {%block main_block%}
-  
+
 
 <div class="hero_area">
-  <section class="slider_section" style="background-color: rgb(134, 134, 183); height: 400px;">
+  <section class="slider_section" style="background-image: url('{%static 'images/bike4.jpg'%}'); height: 400px;">
     <div class="slider_container">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -17,9 +16,34 @@
                   <div class="detail-box">
                     <h1>
                       Welcome {{request.user}} <br>
+
+                    </h1>
+
+                    <a href="">
+                      Contact Us
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-5 ">
+                  <div class="img-box">
+                    <img src="" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>
+                      Welcome {{request.user}} <br>
                       
                     </h1>
-                    
+                    <p>
+                      We are promising automobile dealers in kerala. You can choose from wide verities of used vehicle which is in good conditions. Our costumers will also get free first service
+                    </p>
                     <a href="">
                       Contact Us
                     </a>
@@ -27,7 +51,7 @@
                 </div>
                 <div class="col-md-5 ">
                   <div class="img-box">
-                    <img src="{%static 'images/bike-1.png'%}" alt="" />
+                    <img src="" alt="" />
                   </div>
                 </div>
               </div>
@@ -39,12 +63,14 @@
                 <div class="col-md-7">
                   <div class="detail-box">
                     <h1>
-                      Welcome To Our <br>
-                      Gift Shop
+                      Welcome {{request.user}} <br>
+                      
                     </h1>
-                    <p>
-                      Sequi perspiciatis nulla reiciendis, rem, tenetur impedit, eveniet non necessitatibus error distinctio mollitia suscipit. Nostrum fugit doloribus consequatur distinctio esse, possimus maiores aliquid repellat beatae cum, perspiciatis enim, accusantium perferendis.
-                    </p>
+                    <div style="font-style:oblique; font-weight: bolder; color: rgb(219, 202, 215); font-size: xx-large; font-family: fantasy;">
+                    <p style="background-color:transparent; border: cornsilk; font-weight: 900;"> one year offer for our costumer</p>
+                    <p>50% OFF for all spare parts</p>
+                    <p>10% OFF for one time payment</p>
+                    </div>
                     <a href="">
                       Contact Us
                     </a>
@@ -52,32 +78,7 @@
                 </div>
                 <div class="col-md-5 ">
                   <div class="img-box">
-                    <img src="{%static 'images/slider-img.png'%}" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-7">
-                  <div class="detail-box">
-                    <h1>
-                      Welcome To Our <br>
-                      Gift Shop
-                    </h1>
-                    <p>
-                      Sequi perspiciatis nulla reiciendis, rem, tenetur impedit, eveniet non necessitatibus error distinctio mollitia suscipit. Nostrum fugit doloribus consequatur distinctio esse, possimus maiores aliquid repellat beatae cum, perspiciatis enim, accusantium perferendis.
-                    </p>
-                    <a href="">
-                      Contact Us
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-5 ">
-                  <div class="img-box">
-                    <img src="images/slider-img.png" alt="" />
+                    <img src="" alt="" />
                   </div>
                 </div>
               </div>
@@ -98,116 +99,86 @@
       </div>
     </div>
   </section>
-</div>  
+</div>
 
-  <section class="shop_section layout_padding">
+<section class="shop_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+        Latest Products
+      </h2>
+    </div>
     <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-          Latest Products
-        </h2>
-      </div>
-      <div class="row d-flex justify-content-center" >
-        {%for p in data%}
-        <div class="col-sm-6 col-md-4 col-lg-3" >
+      <div class="row">
+        <div class="col-md-6">
+          <div style="display: flex; background-color: aliceblue; width: 300px;">
+            <form method="GET" action="">
+              <label for="min_price">Minimum Price:</label>
+              <input type="number" name="min_price" id="min_price" style="display: block;">
 
-          <div class="box">
-            <a href="{%url 'bike-detail' p.id%}">
-              <div class="img-box">
-                <img src="{{p.image.url}}" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  model:{{p.Model_year}}
-                </h6>
-                
-                <h6>
-                  Price:
-                  <span>
-                    {{p.price}}
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  {{p.title}}
-                </span>
-              </div>
-            </a>
+
+              <label for="max_price">Maximum Price:</label>
+              <input type="number" name="max_price" id="max_price" style="display: block;">
+
+              <button type="submit">Filter</button>
+            </form>
           </div>
         </div>
-        {%endfor%}
-     
-      </div>
-      <div class="btn-box">
-        <a href="">
-          View All Products
-        </a>
-      </div>
-    </div>
-  </section>
-  <!--product section ends-->
 
-  <section class="info_section  layout_padding4-top " style="background-color: rgb(9, 10, 9);">
-    <div class="social_container">
-      <div class="social_box">
-        <a href="">
-          <i class="fa fa-facebook" aria-hidden="true"></i>
-        </a>
-        <a href="">
-          <i class="fa fa-twitter" aria-hidden="true"></i>
-        </a>
-        <a href="">
-          <i class="fa fa-instagram" aria-hidden="true"></i>
-        </a>
-        <a href="">
-          <i class="fa fa-youtube" aria-hidden="true"></i>
-        </a>
+
+
+        <div class="col-md-6">
+          {%for cat in categories%}
+          <div style="display: flex; justify-content: right;">
+            <a href="{%url 'all'%}?category={{cat.name}}">{{cat.name}}</a>
+          </div>
+          {%endfor%}
+        </div>
       </div>
+
     </div>
-    <div class="info_container ">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-3">
-            <h6>
-              ABOUT US
-            </h6>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
-            </p>
-          </div>
-          
-          <div class="col-md-6 col-lg-3">
-            <h6>
-              NEED HELP
-            </h6>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
-            </p>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <h6>
-              CONTACT US
-            </h6>
-            <div class="info_link-box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span> Gb road 123 london Uk </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>+01 12345678901</span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span> demo@gmail.com</span>
-              </a>
+
+
+    <div class="row d-flex justify-content-center">
+      {%for p in data%}
+      <div class="col-sm-6 col-md-4 col-lg-3">
+
+        <div class="box">
+          <a href="{%url 'bike-detail' p.id%}">
+            <div class="img-box">
+              <img src="{{p.image.url}}" alt="">
             </div>
-          </div>
+            <div class="detail-box">
+              <h6>
+                model:{{p.Model_year}}
+              </h6>
+
+              <h6>
+                Price:
+                <span>
+                  {{p.price}}
+                </span>
+              </h6>
+            </div>
+            <div class="new">
+              <span>
+                {{p.title}}
+              </span>
+            </div>
+          </a>
         </div>
       </div>
-    </div>
-    
+      {%endfor%}
 
-  </section>
+    </div>
+    <div class="btn-box">
+      <a href="{%url 'all'%}">
+        View All Products
+      </a>
+    </div>
+  </div>
+</section>
+<!--product section ends-->
+
+
 {%endblock%}
