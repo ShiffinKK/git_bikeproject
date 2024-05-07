@@ -16,10 +16,23 @@ KEY_SECRET=""
 @method_decorator(csrf_exempt,name="dispatch")
 class PaymentVerificationView(View):  
    def post(self,request,*args,**kwargs):
-      print(request.POST)
+      client = razorpay.Client(auth=(KEY_ID, KEY_SECRET))
+      data=request.POST
      
+      try:
+         client.utility.verify_payment_signature(data)
+         print(data)
+         order_obj=Order.objects.get(order_id=data.get("razorpay_order_id"))
+         order_obj.is_paid=True
+         order_obj.save()
+         print("******Transaction completed*****")
+        
+
+      except:
+         print("!!!!!!!Transaction Failed!!!")
       
       return render(request,"sucess2.html")
+
 
 
 class SignUpView(View):
@@ -104,7 +117,7 @@ class AddToWishListView(View):
         
           
           Bike_object=bike_obj,
-          Cart_object=request.user.cart
+          Cart_object=request.user.wish
 
         )
         return redirect("all")
@@ -112,13 +125,13 @@ class AddToWishListView(View):
 @method_decorator([signin_required,never_cache],name="dispatch")    
 class WishListItemView(View):
         def get(self,request,*args,**kwargs):
-            qs=request.user.cart.cartitem.filter(is_order_placed=False)
+            qs=request.user.wish.wishitem.filter(is_order_placed=False)
             return render(request,"compare_list.html",{"data":qs})
 
 @method_decorator([signin_required,never_cache],name="dispatch")
 class ServiceListView(View):
       def get(self,request,*args,**kwargs):
-         qs=Service.objects.all()
+         qs=Service.objects.filter(owner=request.user)
          return render (request,"service.html",{"data":qs})
          
 @method_decorator([signin_required,never_cache],name="dispatch")
@@ -164,6 +177,8 @@ class CheckOutView(View):
           client = razorpay.Client(auth=(KEY_ID, KEY_SECRET))
           data = { "amount":total*100, "currency": "INR", "receipt": "order_rcptid_11" }
           payment = client.order.create(data=data)
+          order_create.order_id=payment.get("id")
+          order_create.save()
           
           print("payment initiate",payment)
           context={
@@ -187,7 +202,7 @@ class SignOutView(View):
 
    def get(self,request,*args,**kwargs):
       logout(request)
-      return redirect("signin")
+      return redirect("start")
    
 class SucessView(View):
    def get(self,request,*args,**kwargs):

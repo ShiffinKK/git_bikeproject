@@ -32,14 +32,14 @@ class Bike(models.Model):
         return self.title
     
 class Wishlist(models.Model):
-    owner=models.OneToOneField(User,on_delete=models.CASCADE,related_name="cart")
+    owner=models.OneToOneField(User,on_delete=models.CASCADE,related_name="wish")
     created_date=models.DateTimeField(auto_now_add=True)
     updated_date=models.DateTimeField(auto_now=True)
     is_active=models.BooleanField(default=True)
 
     @property
     def wish_item(self):
-        return self.cartitem.filter(is_order_placed=False)
+        return self.wishitem.filter(is_order_placed=False)
     
    
 
@@ -65,7 +65,7 @@ class Wishlist(models.Model):
 
 class WishlistItem(models.Model):
     Bike_object=models.ForeignKey(Bike,on_delete=models.CASCADE)
-    Cart_object=models.ForeignKey(Wishlist,on_delete=models.CASCADE,related_name="cartitem")
+    Cart_object=models.ForeignKey(Wishlist,on_delete=models.CASCADE,related_name="wishitem")
     created_date=models.DateTimeField(auto_now_add=True)
     updated_date=models.DateTimeField(auto_now=True)
     is_active=models.BooleanField(default=True)
@@ -78,6 +78,8 @@ class WishlistItem(models.Model):
     def item_title(self):
         return self.Bike_object.title
     
+    
+    
 
 class Order(models.Model):
 
@@ -89,6 +91,9 @@ class Order(models.Model):
     is_paid=models.BooleanField(default=False)
     total=models.PositiveIntegerField()
     order_id=models.CharField(max_length=200,null=True)
+    created_date=models.DateTimeField(auto_now_add=True)
+
+
     options=(
         ("cod","cod"),
         ("online","online")
@@ -113,6 +118,8 @@ class Order(models.Model):
         if self.status=="intransit":
             shipped=True
             return shipped
+    
+
         
 
 class PriceRange(models.Model):

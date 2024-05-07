@@ -19,6 +19,8 @@ from django.urls import path
 from bike import views
 from django.conf.urls.static import static
 from django.conf import settings
+from bike import BikeApi
+from rest_framework.authtoken.views import ObtainAuthToken
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,7 +41,24 @@ urlpatterns = [
     path('why/',views.WhyUsView.as_view(),name="why"),
 
     path('ordetitem/<int:pk>remove/',views.OrderItemRemoveView.as_view(),name="item-delete"),
-    path('payment/verification/',views.PaymentVerificationView.as_view(),name="verification")
+    path('payment/verification/',views.PaymentVerificationView.as_view(),name="verification"),
+
+    path("api/v1/register/",BikeApi.SignUpView.as_view()),
+    path('api/v1/token/',ObtainAuthToken.as_view()),
+    path("api/all/",BikeApi.ProductListview.as_view()),
+    path('api/v1/Bike/<int:pk>/',BikeApi.ProductDetailView.as_view()),
+    path("api/v1/addcompare/<int:pk>/",BikeApi.AddTOCompare.as_view()),
+    path("api/v1/comparelist/",BikeApi.CompareListView.as_view()) ,
+    path("api/v1/compareitem/remove/<int:pk>",BikeApi.CompareItemRemoveView.as_view()),
+    path("api/v1/servicelist/",BikeApi.ServiceListView.as_view()),
+    path('api/v1/order/<int:pk>',BikeApi.CheckOutView.as_view()),
+    path('api/v1/order/summary/',BikeApi.OrderSummaryView.as_view()),
+    path('api/v1/order/remove/<int:pk>',BikeApi.OrderRemoveView.as_view())
+
+
+    
+
+
 
 
 
