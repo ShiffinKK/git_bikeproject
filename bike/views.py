@@ -10,8 +10,8 @@ from django.views.decorators.cache import never_cache
 from bike.decorators import signin_required
 from django.views.decorators.csrf import csrf_exempt
 
-KEY_ID="rzp_test_zZEPSidnmoQj3D"
-KEY_SECRET="nuad5JpBkJGAFMNDhrCeryo7"
+KEY_ID=""
+KEY_SECRET=""
 
 @method_decorator(csrf_exempt,name="dispatch")
 class PaymentVerificationView(View):  
