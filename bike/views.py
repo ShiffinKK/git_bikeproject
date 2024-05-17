@@ -10,14 +10,15 @@ from django.views.decorators.cache import never_cache
 from bike.decorators import signin_required
 from django.views.decorators.csrf import csrf_exempt
 
-KEY_ID=""
-KEY_SECRET=""
+KEY_ID="rzp_test_zZEPSidnmoQj3D"
+KEY_SECRET="nuad5JpBkJGAFMNDhrCeryo7"
 
 @method_decorator(csrf_exempt,name="dispatch")
 class PaymentVerificationView(View):  
    def post(self,request,*args,**kwargs):
       client = razorpay.Client(auth=(KEY_ID, KEY_SECRET))
       data=request.POST
+      print("hgfhgfjghjgjj====",data)
      
       try:
          client.utility.verify_payment_signature(data)
@@ -186,6 +187,7 @@ class CheckOutView(View):
              "order_id":payment.get("id"),
              "amount":payment.get("amount")
           }
+          print(context)
           return render(request,"payment.html",{"context":context})
         
       return redirect("sucess")
